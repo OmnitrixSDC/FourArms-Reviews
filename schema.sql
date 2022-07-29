@@ -35,7 +35,7 @@ CREATE TABLE characteristic_reviews(
 
 \COPY characteristic_reviews FROM '/data/characteristic_reviews.csv' DELIMITER ',' CSV HEADER;
 
-CREATE TABLE "characteristics"(
+CREATE TABLE characteristics(
   id integer NOT NULL,
   product_id integer NOT NULL,
   "name" varchar(7) NOT NULL,
@@ -60,15 +60,15 @@ ALTER TABLE characteristic_reviews
 
 ALTER TABLE characteristic_reviews
   ADD CONSTRAINT characteristic_reviews_characteristic_id_fley
-    FOREIGN KEY (characteristics_id) REFERENCES "characteristics" (id);
+    FOREIGN KEY (characteristics_id) REFERENCES characteristics(id);
 
 
-INSERT INTO PRODUCTS SELECT DISTINCT ON (product_id) product_id FROM reviews;
+INSERT INTO PRODUCTS SELECT DISTINCT ON (product_id) product_id FROM characteristics;
 
 ALTER TABLE reviews
   ADD CONSTRAINT reviews_product_id_fkey
-    FOREIGN KEY (product_id) REFERENCES products (id);
+    FOREIGN KEY (product_id) REFERENCES products(id);
 
-ALTER TABLE "characteristics"
+ALTER TABLE characteristics
   ADD CONSTRAINT characteristics_product_id_fkey
     FOREIGN KEY (product_id) REFERENCES products(id);
