@@ -59,7 +59,7 @@ ALTER TABLE characteristic_reviews
     FOREIGN KEY (review_id) REFERENCES reviews(id);
 
 ALTER TABLE characteristic_reviews
-  ADD CONSTRAINT characteristic_reviews_characteristic_id_fley
+  ADD CONSTRAINT characteristic_reviews_characteristic_id_fkey
     FOREIGN KEY (characteristics_id) REFERENCES characteristics(id);
 
 
