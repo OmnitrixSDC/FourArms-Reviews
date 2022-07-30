@@ -1,8 +1,9 @@
-import express from 'express';
-import 'dotenv/config';
-import morgan from 'morgan';
+const express = require('express');
+const morgan = require('morgan');
+const getReviews = require('./controllers');
+require('dotenv').config();
 
-const { PORT } = process.env;
+const { SERVER_PORT } = process.env;
 const service = express();
 const router = express.Router();
 
@@ -11,7 +12,10 @@ service.use(morgan('dev'));
 service.use('/', router);
 
 router.get('/reviews', (req, res) => {
-  res.status(200).send(`Reviews`);
+  const { productId } = req.body;
+  getReviews(productId).then((data) => {
+    res.status(200).send(data);
+  });
 });
 
 router.get('/meta', (req, res) => {
@@ -31,5 +35,5 @@ router.put('/reviews/:review_id/report', (req, res) => {
   res.sendStatus(204);
 });
 
-service.listen(PORT);
-console.log(`Server active. Listening on port ${PORT}`);
+service.listen(SERVER_PORT);
+console.log(`Server active. Listening on port ${SERVER_PORT}`);
