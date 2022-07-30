@@ -1,0 +1,9 @@
+*.log
+.DS_Store
+bower_components
+node_modules
+.env
+client/dist/bundle.js
+client/dist/bundle.js.gz
+package-lock.json
+coverage
