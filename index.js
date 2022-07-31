@@ -1,6 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
-const getReviews = require('./controllers');
+const { getReviews, postReview, updateHelpful } = require('./controllers');
 require('dotenv').config();
 
 const { SERVER_PORT } = process.env;
@@ -18,16 +18,17 @@ router.get('/reviews', (req, res) => {
   });
 });
 
-router.get('/meta', (req, res) => {
+router.get('/reviews/meta', (req, res) => {
   res.status(200).send(`Meta`);
 });
 
 router.post('/reviews', (req, res) => {
-  console.log(req.body);
+  postReview(req.body);
   res.status(201).send(req.body);
 });
 
 router.put('/reviews/:review_id/helpful', (req, res) => {
+  console.log(req.path.slice(9));
   res.sendStatus(204);
 });
 
