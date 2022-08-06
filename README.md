@@ -17,7 +17,7 @@ Backend Microservice for the Reviews section of the Atelier Project
 # Contributors
 ### Andrew Schwaderer
 ### Mark Miw
-
+### Bruce Rabago
 
 
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BlandSchwad)
