@@ -12,8 +12,24 @@ A RESFTUL API Microservice for the Reviews section of the Atelier Project
 $ git clone https://github.com/OmnitrixSDC/FourArms-Reviews.git
 $ cd FourArms-Reviews
 $ npm install
+```
+
+# Update Environment Variables
+Edit a copy of the example.env file for your deployment. DB_HOST accepts URL or IP Address. Remembner DB_PORT is a separate variable and **DOES NOT** go at the end of the host address.
+```
+SERVER_PORT="42000"
+DB_USERNAME="postgres"
+DB_PASSWORD="postgres"
+DB_PORT="5432"
+DB_HOST="http://exampledbserver.address"
+DB_NAME="reviews"
+```
+
+# Start
+```
 $ npm start
 ```
+
 ## API
 
 ### Endpoints
@@ -67,10 +83,10 @@ Parameters:
 | :---         |     :---:      |          :---: |
 review_id |  integer |	Required ID of the review to update|
 
-Response 204 NO CONTENT
+Response Status: 204 NO CONTENT
 
 #### PUT /reviews/:review_id/report
-Flags review for moderator review
+Flags review for moderator inspection
 
 Parameters:
 | Parameter | Type | Description |
@@ -79,12 +95,17 @@ review_id |  integer |	Required ID of the review to update|
 
 Response Status: 204 NO CONTENT
 
-# Coming Soon:
-Containerization!
+# Deploy with Docker: ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+```
+$ docker pull blandschwad/fourarms-server:latest
+```
+
+Copy the docker run command, edit the -e options, then paste and execute to deploy. Use optional -d flag to run in background.
+
+```
+$ docker run --name fourarms -e SERVER_PORT="42000" -e DB_USERNAME="postgres" -e DB_PASSWORD="postgres" -e  DB_PORT="5432" -e DB_HOST="54.183.250.160" -e DB_NAME="postgres" -p 42000:42000 blandschwad/fourarms-server:latest
+```
+
 
 # Contributors
 ### Andrew Schwaderer [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BlandSchwad)
-### Mark Miw [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/markmiw)
-
-### Bruce Rabago [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BungaloBuce)
-
