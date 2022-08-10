@@ -15,7 +15,7 @@ $ npm install
 ```
 
 # Update Environment Variables
-Edit a copy of the example.env file for your deployment. DB_HOST accepts URL or IP Address. Remembner DB_PORT is a separate variable and **DOES NOT** go at the end of the host address.
+Edit a copy of the example.env file for your deployment. DB_HOST accepts URL or IP Address. Remember DB_PORT is a separate variable and **DOES NOT** go at the end of the host address.
 ```
 SERVER_PORT="42000"
 DB_USERNAME="postgres"
